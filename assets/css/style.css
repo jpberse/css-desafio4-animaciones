@@ -11,6 +11,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
+    background-color: var(--primary-color)
 }
 
 .nav-container {
@@ -48,7 +49,7 @@
     height: 1px;
     top: 60%;
     margin-top: -0.5px;
-    background: #fff;
+    background: var(--secondary-color)
 }
 
 .logo-container span:before {
@@ -56,12 +57,12 @@
 }
 .logo-container span:after {
     right: 2.5px;
-    background: #fff;
+    background:var(--secondary-color);
     transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .logo-container span:hover:before {
-    background: #fff;
+    background: var(--secondary-color);
     width: 100%;
     transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -131,7 +132,7 @@
 }
 
 .card-container button:hover {
-    background-color: var(--secondary-color)
+    background-color: #e8e8e85f
 }
 
 .footer-container {
@@ -174,4 +175,97 @@
         "main"
         "footer";
     grid-template-rows: 1fr 30fr 1fr;
+}
+
+@media (min-width: 576px) {
+    .grid-area-container {
+        grid-template-areas: 
+            "nav main"
+            "nav main"
+            "nav footer";
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 6fr;
+    }
+
+    .nav-container {
+        width: 24em;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .logo-container {
+        margin-bottom: 4em;
+    }
+
+    .logo-container img {
+        width: 6em;
+        height: 6em;
+    }
+
+    .logo-container span {
+        font-size: 1.5em;
+    }
+
+    .mobile-menu-container {
+        display: none;
+    }
+
+    .desktop-menu-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 1em;
+    }
+
+    .desktop-menu-container a {
+        display: inline-block;
+        position: relative;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: lighter;
+        font-size: 2em;
+        color: var(--secondary-color);
+        cursor: pointer;
+    }
+    
+    .desktop-menu-container a:before, a:after {
+        position: absolute;
+        content: '';
+        height: 1px;
+        width: 0%;
+        margin-top: -0.5px;
+        top: 50%;
+        background: var(--secondary-color)
+    }
+
+    .desktop-menu-container a:before {
+        left: -2.5px;
+    }
+    .desktop-menu-container a:after {
+        right: 2.5px;
+        background:var(--secondary-color);
+        transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    
+    .desktop-menu-container a:hover:before {
+        background: var(--secondary-color);
+        width: 100%;
+        transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    
+    .desktop-menu-container a:hover:after {
+        background: transparent;
+        width: 100%;
+        transition: 0s;
+    }
+
+    .main-container {
+        display: grid;
+        align-content: center;
+        grid-template-columns: repeat(4,1fr);
+    }
+
+    .footer-container {
+        height: 7em;
+    }
 }
