@@ -33,12 +33,43 @@
     margin-bottom: 10px;
 }
 
-.nav-container span {
+.logo-container span {
     font-family: "Playfair Display", serif;
     font-size: 1em;
     margin-left: 1em;
     position: relative;
     cursor: pointer;
+}
+
+.logo-container span:before, span:after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 1px;
+    top: 60%;
+    margin-top: -0.5px;
+    background: #fff;
+}
+
+.logo-container span:before {
+    left: 0.5px;
+}
+.logo-container span:after {
+    right: 2.5px;
+    background: #fff;
+    transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.logo-container span:hover:before {
+    background: #fff;
+    width: 100%;
+    transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.logo-container span:hover:after {
+    background: transparent;
+    width: 100%;
+    transition: 0s;
 }
 
 .desktop-menu-container {
@@ -66,16 +97,7 @@
     height: 35em;
     object-fit: cover;
     filter: grayscale(100%);
-
     will-change: filter;
-
-    transition: all 0.4s ease-in-out;
-}
-
-.card-container img:hover {
-    filter: grayscale(0%);
-    filter: drop-shadow(0px 0px 25px rgba(0, 0, 0));
-    transform: scale(1.05);
 }
 
 .card-container button {
@@ -89,6 +111,27 @@
     background-color: transparent;
     color: var(--secondary-color);
     border-radius: 50px;
+    opacity: 0;
+    transform: translateY(550px);
+}
+
+.card-container img, .card-container button {
+    transition: all 0.4s ease-in-out;
+}
+
+.card-container:hover img {
+    filter: grayscale(0%);
+    filter: drop-shadow(0px 0px 25px rgba(0, 0, 0));
+    transform: scale(1.05);
+}
+
+.card-container:hover button {
+    transform: translateY(520px);
+    opacity: 1;
+}
+
+.card-container button:hover {
+    background-color: var(--secondary-color)
 }
 
 .footer-container {
@@ -96,10 +139,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     background-color: var(--primary-color);
     color: var(--secondary-color);
+}
 
+.footer-container i:hover {
+    animation: icon-shacking 0.2s ease infinite;
+}
+
+@keyframes icon-shacking {
+    0% {
+        transform: rotate(0deg), scale(1);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    50% {
+        transform: rotate(0deg),scale(3);
+    } 
+    75% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0deg), scale(1);
+    }
 }
 
 .grid-area-container {
